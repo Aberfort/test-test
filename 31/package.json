@@ -32,6 +32,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "axios-auth-refresh": "^2.2.4",
+    "jquery-match-height": "^0.7.2",
     "nodemailer": "^6.1.0",
     "qs": "^6.9.3"
   }

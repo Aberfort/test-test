@@ -1,0 +1,47 @@
+@media screen and (max-width: 1279px) {
+  .values__content--item {
+    h3 {
+      &::before {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    &:nth-child(2) {
+      right: -21px;
+      top: 100px;
+    }
+
+    &:nth-child(3) {
+      right: 308px;
+      bottom: -42px;
+    }
+
+    &:nth-child(4) {
+      top: 215px;
+    }
+  }
+
+  .values__content--center {
+    max-width: 370px;
+    min-height: 370px;
+    max-height: 370px;
+    position: relative;
+
+    img {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 18px;
+      max-width: 260px;
+    }
+  }
+
+  h3.title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

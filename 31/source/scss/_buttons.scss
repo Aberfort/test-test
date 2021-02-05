@@ -1,25 +1,40 @@
 .main-btn {
-  display: inline-block;
-  width: 100%;
-  padding: 22px 0;
-  background: linear-gradient(87.3deg, #31D5D8 6.54%, #16CECE 81.43%);
-  border-radius: 30px;
+  background-color: #fff;
+  font-style: normal;
+  font-weight: 600;
   font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: white;
-  cursor: pointer;
-  transition: .5s cubic-bezier(.365, .335, 0, 1);
-  box-shadow: none;
-  border: none;
+  line-height: 20px;
+  color: #48DAA2;
+  padding: 12px 49px 12px 27px;
+  border-radius: 22px;
+  position: relative;
+
+  &.btn-green {
+    background-color: #48DAA2;
+    color: #fff;
+
+    &::before {
+      background-image: url("../img/icon-green.svg");
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-image: url("../img/icon.svg");
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    right: 27px;
+    top: 25px;
+    transform: translateY(-50%);
+  }
 
   &:focus {
     outline: none;
   }
 
   &:hover {
-    color: white;
-    background-position: 0;
-    background: linear-gradient(87.3deg, #2CCCCF 6.54%, #13BEBE 81.43%);
+
   }
 }

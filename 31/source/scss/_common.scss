@@ -1,6 +1,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  counter-reset: my-sec-counter;
 }
 
 a {
@@ -17,6 +18,36 @@ b {
 
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, label, div,
 a, input, button, span, textarea, select, option, time, li {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   color: #323232;
+}
+
+h2.title {
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 50px;
+  color: #363030;
+  margin-bottom: 40px;
+}
+
+p.description {
+  font-size: 18px;
+  line-height: 26px;
+  color: #0B0B0B;
+  margin-bottom: 30px;
+}
+
+h3.title {
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 900;
+  letter-spacing: 0.346667px;
+  text-transform: uppercase;
+  color: #0B0B0B;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1210px;
+  }
 }

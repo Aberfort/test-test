@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+node_modules
+yarn.lock
+/ubuntu-xenial-16.04-cloudimg-console.log
+npm-debug.log

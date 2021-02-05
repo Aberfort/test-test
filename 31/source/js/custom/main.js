@@ -430,99 +430,17 @@ window.onload = () => {
 
 ;
 (function ($) {
-  function onResize() {
-    if ($(window).width() < 768) {
-      $('.footer__menu .has-dropdown').on('click', function () {
-        $(this).toggleClass('arrow-down');
-        $('.arrow-down .toggle-menu').slideToggle('slow');
-      });
-
-      $('.footer__menu .has-dropdown').on('click', function (e) {
-        e.preventDefault();
-
-        var $this = $(this).find('.sub-menu');
-
-        if ($this.hasClass('show')) {
-          $this.removeClass('show');
-        } else {
-          $this.parent().find('.sub-menu').removeClass('show');
-          $this.toggleClass('show');
-        }
-      });
-    } else {
-      $('.footer__menu .has-dropdown').off('click');
-      $('.footer__menu .has-dropdown').off('click');
-    }
-  }
-
 
   $(document).ready(function () {
 
-    onResize();
+    $(".values__content--item").hover(function () {
+      const value = $(this).html();
+      $(".values__content--center").html(value);
+    });
+
   });
 
   $(window).resize(function () {
-    onResize();
+
   });
 }(jQuery));
-
-function refreshToken(cb, firstName, lastName, email) {
-  const refreshToken = 'eyJhbGciOiJIUzUxMiIsInYiOiIyLjAiLCJraWQiOiJmMTY3ZTY2NC1lYjM0LTRkZmEtOTljNC0zNGNjNjE2YmY1YjYifQ.eyJ2ZXIiOiI2IiwiY2xpZW50SWQiOiJ1N2hkZFUyM1RUbXlvakZBcjV3UDJBIiwiY29kZSI6IjFGT0tIZHU4NnlfTkpnaG9weWxRdDZpLTJIQWhqWjE4USIsImlzcyI6InVybjp6b29tOmNvbm5lY3Q6Y2xpZW50aWQ6dTdoZGRVMjNUVG15b2pGQXI1d1AyQSIsImF1dGhlbnRpY2F0aW9uSWQiOiJlNzc5YmNmM2U5MmYwYmI0MWMzYjdjOTU0YjRkMGZkNSIsInVzZXJJZCI6Ik5KZ2hvcHlsUXQ2aS0ySEFoaloxOFEiLCJncm91cE51bWJlciI6MCwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwiYWNjb3VudElkIjoibUxDNEJUT2dRUkdOamFRZjZPRzcxUSIsIm5iZiI6MTU5MDEzNzI3OSwiZXhwIjoyMDYzMTc3Mjc5LCJ0b2tlblR5cGUiOiJyZWZyZXNoX3Rva2VuIiwiaWF0IjoxNTkwMTM3Mjc5LCJqdGkiOiI4MGNmZGEzMy1mZjgxLTQ5MDUtODkyNS1iOWIyNTg1ZDFmMTciLCJ0b2xlcmFuY2VJZCI6MH0.HmGewDtpqthaRCV82M6Sr1J4eTAaehC6UZJntdCOAZautIyAQPD5izLGdlj8nrLQ_8JTXFCs5cVr5tr6FSot-Q';
-  const url = 'https://api.zoom.us/v2/webinars/92245157641/registrants';
-
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6InBGeGdfYWdzUUZlUEtiYXZkUFJoeVEiLCJleHAiOjE1OTA3NDE2MzAsImlhdCI6MTU5MDEzNjgzMX0.R85ZWKY1u65hFe4UxCVxrZ0oOrE1tphJMzP2i9ubefA");
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("Access-Control-Allow-Origin", "*");
-
-
-  var urlencoded = new URLSearchParams();
-  urlencoded.append("grant_type", "refresh_token");
-  urlencoded.append("refresh_token", refreshToken);
-
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: urlencoded,
-    redirect: 'follow',
-  };
-
-  fetch(url, requestOptions)
-      .then(function (result) {
-        return result.json();
-      })
-      .then(function (response) {
-        const at = response["access_token"];
-        cb(at, firstName, lastName, email);
-      })
-      .catch(error => console.log('error', error));
-}
-
-function addWebinarMember(at, firstName, lastName, email) {
-
-  const user = {
-    "firstName": firstName,
-    "lastName": lastName,
-    "email": email,
-  };
-
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", at);
-  myHeaders.append("Accept", "application/json");
-  myHeaders.append("Content-Type", "application/json");
-
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: JSON.stringify(user),
-    redirect: 'follow',
-  };
-
-  fetch("https://api.zoom.us/v2/webinars/92245157641/registrants", requestOptions)
-      .then(response => response.text())
-      .catch(error => console.log('error', error));
-}
-
-function submitForm(firstName, lastName, email) {
-  refreshToken(addWebinarMember, firstName,lastName,email);
-}
